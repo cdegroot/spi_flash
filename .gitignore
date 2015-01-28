@@ -1,0 +1,5 @@
+bin
+.objs/
+*.cbp
+*.depend
+*build_log.html
