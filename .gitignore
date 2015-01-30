@@ -3,3 +3,5 @@ bin
 *.cbp
 *.depend
 *build_log.html
+*.save
+doxygen/

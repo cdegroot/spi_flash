@@ -522,11 +522,12 @@
 				<Option type="1" />
 				<Option compiler="avr-gcc" />
 				<Compiler>
+					<Add option="-Os" />
 					<Add option="-mmcu=$(MCU)" />
 					<Add option="-D__AVR_ATmega328P__" />
-					<Add option="-Os" />
 					<Add option="-DF_CPU=$(CPU_FREQ)" />
 					<Add option="-DCODE_BLOCKS" />
+					<Add option="-DUSE_SPI" />
 					<Add directory="$(ARDUINO_DIR)/hardware/arduino/cores/arduino" />
 					<Add directory="$(ARDUINO_DIR)/libraries" />
 					<Add directory="$(SKETCH_DIR)/hardware/attiny/variants/eightanaloginputs" />
@@ -534,9 +535,9 @@
 					<Add directory="$(SKETCH_DIR)/libraries" />
 				</Compiler>
 				<Linker>
+					<Add option="-s" />
 					<Add option="-mmcu=$(MCU)" />
 					<Add option="-Wl,-Map=$(TARGET_OUTPUT_FILE).map,--cref" />
-					<Add option="-s" />
 				</Linker>
 				<ExtraCommands>
 					<Add after="avr-objcopy -O ihex -R .eeprom -R .eesafe $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_FILE).hex" />
@@ -928,12 +929,13 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-DARDUINO=101" />
+			<Add option="-Wall" />
 			<Add option="-fno-exceptions" />
 			<Add option="-ffunction-sections" />
 			<Add option="-fdata-sections" />
 			<Add option="-x c++" />
 			<Add option="-s" />
+			<Add option="-DARDUINO=101" />
 			<Add option="-DUSE_EEPROM=0" />
 			<Add option="-DUSE_ETHERNET=0" />
 			<Add option="-DUSE_FIRMATA=0" />
@@ -947,7 +949,6 @@
 			<Add option="-DUSE_STEPPER=0" />
 			<Add option="-DUSE_TINYGPS=0" />
 			<Add option="-DUSE_WIRE=0" />
-			<Add option="-Wall" />
 			<Add directory="." />
 			<Add directory="$(ARDUINO_DIR)/libraries/EEPROM" />
 			<Add directory="$(ARDUINO_DIR)/libraries/Ethernet" />
@@ -1003,6 +1004,15 @@
 		<Unit filename="libraries/libraries.cpp" />
 		<Unit filename="sketch.cpp" />
 		<Extensions>
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build extract_all="1" />
+				<doxyfile_warnings warn_if_undocumented="1" />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
 			<envvars />
 			<code_completion />
 			<debugger />
