@@ -13,10 +13,10 @@ void hexDump(byte *data, long offset, short count) {
   char ascBuffer[17];
   ascBuffer[16] = '\0';
   byte linePosition = 0;
-  Serial.println("");
+  Serial.println();
   for (short i = 0; i < count; i++) {
       if (linePosition == 0) {
-          sprintf(hexBuffer, "%08X - ", (unsigned long) (offset + i));
+          sprintf(hexBuffer, "%08lX - ", (unsigned long) (offset + i));
           Serial.print(hexBuffer);
       }
       sprintf(hexBuffer, "%02X ", (unsigned char) data[i]);
